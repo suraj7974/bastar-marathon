@@ -1,0 +1,55 @@
+import { NextResponse } from "next/server";
+import crypto from "crypto";
+
+interface CreateOrderBody {
+  amount: number;
+  name: string;
+  email: string;
+  phone: string;
+  identification_number: string;
+}
+
+function generateHash(params: CreateOrderBody, txnid: string): string {
+  const salt = process.env.PAYU_SALT;
+  if (!salt) throw new Error("PAYU_SALT is not set");
+  const hashString = `${process.env.PAYU_KEY}|${txnid}|${params.amount}|Marathon Registration|${params.name}|${params.email}|||||||||||${salt}`;
+  return crypto.createHash("sha512").update(hashString).digest("hex");
+}
+
+export async function POST(req: Request) {
+  try {
+    const params: CreateOrderBody = await req.json();
+    const txnid = `txn_${Date.now()}`;
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
+    const hash = generateHash(params, txnid);
+
+    const paymentData = {
+      key: process.env.PAYU_KEY,
+      txnid,
+      amount: params.amount,
+      productinfo: "Marathon Registration",
+      firstname: params.name,
+      email: params.email,
+      phone: params.phone,
+      surl: encodeURI(
+        `${baseUrl}/api/payment-callback?identification_number=${params.identification_number}&success=true`
+      ),
+      furl: encodeURI(
+        `${baseUrl}/api/payment-callback?identification_number=${params.identification_number}&success=false`
+      ),
+      hash,
+    };
+
+    return NextResponse.json(paymentData);
+  } catch (error) {
+    console.error("[create-order] Error:", error);
+    return NextResponse.json(
+      {
+        error: "Failed to create order",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 }
+    );
+  }
+}
