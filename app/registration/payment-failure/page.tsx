@@ -1,13 +1,14 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function PaymentFailurePage() {
-  const searchParams = useSearchParams();
-  const identificationNumber = searchParams?.get("identification_number") ?? "";
+export default async function PaymentFailurePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ identification_number?: string }>;
+}) {
+  const params = await searchParams;
+  const identificationNumber = params?.identification_number ?? "";
 
   return (
     <div className="min-h-screen bg-muted/30 flex items-center justify-center p-4">
