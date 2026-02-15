@@ -18,7 +18,18 @@ export default function Home() {
       </div>
 
       <header className="absolute top-0 left-0 right-0 z-50 p-6 md:p-8 flex justify-between items-center">
-        <div className="text-2xl md:text-3xl font-bold tracking-widest uppercase text-white/90 drop-shadow-md"></div>
+        <div className="flex items-center gap-4">
+          <Image
+            src="/images/logo.png"
+            alt="Bastar Marathon Logo"
+            width={60}
+            height={60}
+            className="w-12 h-12 md:w-16 md:h-16 object-contain"
+          />
+          <div className="text-2xl md:text-3xl font-bold tracking-widest uppercase text-white/90 drop-shadow-md">
+            Bastar Marathon
+          </div>
+        </div>
       </header>
 
       <main className="flex flex-1 flex-col items-center justify-center px-4 text-center sm:px-8 relative z-10 pt-20">
