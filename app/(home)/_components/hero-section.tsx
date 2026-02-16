@@ -68,7 +68,7 @@ export default function HeroSection() {
         <Button
           asChild
           size="sm"
-          className="relative h-14 sm:h-16 px-8 sm:px-12 text-lg sm:text-xl font-bold rounded-full bg-white text-black hover:!bg-white active:!bg-white transition-none"
+          className="relative h-14 sm:h-16 px-8 sm:px-12 text-lg sm:text-xl md:bottom-12 font-bold rounded-full bg-white text-black hover:!bg-white active:!bg-white transition-none"
         >
           <Link href="/registration" className="flex items-center gap-3">
             REGISTER NOW
@@ -93,7 +93,7 @@ export default function HeroSection() {
 
       <button
         onClick={toggleMute}
-        className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 text-white"
+        className="absolute bottom-8 right-8 md:bottom-22 md:right-12 z-20 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 text-white"
         aria-label={isMuted ? "Unmute video" : "Mute video"}
       >
         {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
