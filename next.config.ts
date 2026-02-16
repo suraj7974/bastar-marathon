@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     SMTP_USER: process.env.SMTP_USER,
     SMTP_PASS: process.env.SMTP_PASS,
   },
+  images: {
+    qualities: [75, 100],
+  },
 };
 
 export default nextConfig;
