@@ -29,7 +29,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden">
+    <footer className="relative overflow-hidden text-white">
       <div className="absolute inset-0" aria-hidden />
 
       <div className="absolute top-0 left-0 w-full h-full">
@@ -37,7 +37,7 @@ export function Footer() {
           src="/images/footer-bg.jpg"
           alt="Footer Background"
           fill
-          className="w-full object-cover object-bottom opacity-20"
+          className="w-full object-cover object-bottom opacity-"
         />
       </div>
       <div className="relative container mx-auto pt-12">

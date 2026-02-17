@@ -87,7 +87,7 @@ export default function Explore() {
         )}
       </div>
 
-      <div className="relative z-10 isolate w-full max-w-7xl h-[400px] mx-auto">
+      <div className="relative z-10 isolate w-full container h-[400px] mx-auto">
         {/* SVG for Text Mask */}
         <svg className="absolute inset-0 w-full h-full" aria-hidden>
           <defs>
@@ -99,7 +99,7 @@ export default function Explore() {
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill="white"
-                fontSize="clamp(32px, 10vw, 120px)"
+                fontSize="clamp(60px, 20vw, 160px)"
                 fontWeight="900"
                 style={{
                   fontFamily: "system-ui, -apple-system, sans-serif",

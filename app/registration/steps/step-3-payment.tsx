@@ -17,7 +17,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 
-const REGISTRATION_FEE = 1;
+const REGISTRATION_FEE = 299;
 const TSHIRT_FEE = 200;
 const JAGDALPUR_CITY = "Jagdalpur";
 const TSHIRT_SIZES = ["S", "M", "L", "XL", "XXL"] as const;

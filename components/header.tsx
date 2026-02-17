@@ -15,7 +15,7 @@ const NavLinkItem = ({ href, label }: { href: string; label: string }) => {
 
 export function Header() {
   return (
-    <header className="fixed h-18 top-0 left-0 bg-white shadow-sm right-0 z-50  flex justify-between items-center">
+    <header className="fixed h-18 top-0 left-0 bg-white/50 backdrop-blur-lg shadow-sm right-0 z-50  flex justify-between items-center">
       <div className="container mx-auto flex items-center justify-between gap-4">
         <Image
           src="/images/logo.png"
