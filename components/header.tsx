@@ -22,13 +22,29 @@ export function Header() {
           alt="Bastar Marathon Logo"
           width={60}
           height={60}
-          className="size-12 object-contain"
+          className="size-14 object-contain"
         />
         <nav className="flex items-center gap-5">
           <NavLinkItem href="/" label="Home" />
           <NavLinkItem href="/registration" label="Registration" />
           <NavLinkItem href="/prizes" label="Prizes" />
         </nav>
+        <div className="flex items-center gap-5">
+          <Image
+            src="/images/tourism.png"
+            alt="Tourism Logo"
+            width={60}
+            height={60}
+            className="size-14 object-contain"
+          />
+          <Image
+            src="/images/cg-police.png"
+            alt="CG Police Logo"
+            width={60}
+            height={60}
+            className="size-14 object-contain"
+          />
+        </div>
       </div>
     </header>
   );
