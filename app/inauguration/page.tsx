@@ -65,7 +65,7 @@ export default function InaugurationPage() {
               size="lg"
               className="text-2xl px-12 py-8 transition-all duration-300 transform hover:scale-105 shadow-lg rounded-full"
             >
-              Start Inauguration
+              Inaugurate
             </Button>
           ) : countdown > 0 ? (
             <div className="text-9xl font-bold text-primary animate-pulse">{countdown}</div>
