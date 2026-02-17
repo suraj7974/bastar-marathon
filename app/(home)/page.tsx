@@ -5,7 +5,7 @@ import Explore from "./_components/explore";
 
 export default function Home() {
   return (
-    <div className="relative bg-black">
+    <div>
       <HeroSection />
       <Countdown />
       <RouteMap />

@@ -56,6 +56,47 @@
       transform: scale(1) translateY(0);
     }
   }
+  @keyframes waterFloat {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.4;
+    }
+    25% {
+      transform: translate(8px, -15px) scale(1.05);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translate(-5px, -30px) scale(0.95);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translate(12px, -45px) scale(1.02);
+      opacity: 0.6;
+    }
+  }
+  @keyframes waterFloatSlow {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
+    }
+    33% {
+      transform: translate(-10px, -20px) scale(1.08);
+      opacity: 0.5;
+    }
+    66% {
+      transform: translate(6px, -40px) scale(0.92);
+      opacity: 0.4;
+    }
+  }
+}
+
+.animate-water-float {
+  animation: waterFloat 12s ease-in-out infinite;
+}
+.animate-water-float-slow {
+  animation: waterFloatSlow 18s ease-in-out infinite;
 }
 
 :root {
@@ -65,7 +106,7 @@
   --card-foreground: oklch(0.147 0.004 49.25);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.147 0.004 49.25);
-  --primary: oklch(0.6 0.1 185);
+  --primary: oklch(76.9% 0.188 70.08);
   --primary-foreground: oklch(0.98 0.01 181);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -100,7 +141,7 @@
   --card-foreground: oklch(0.985 0.001 106.423);
   --popover: oklch(0.216 0.006 56.043);
   --popover-foreground: oklch(0.985 0.001 106.423);
-  --primary: oklch(0.7 0.12 183);
+  --primary: oklch(76.9% 0.188 70.08);
   --primary-foreground: oklch(0.28 0.04 193);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
@@ -133,5 +174,14 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-primary;
   }
 }

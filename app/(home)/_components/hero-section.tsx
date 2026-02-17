@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Header } from "@/components/header";
 import { useEffect, useRef, useState } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { VolumeUpIcon, VolumeOffIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -45,58 +45,43 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col font-sans text-white overflow-hidden">
-      <div className="absolute inset-0 z-0 h-full w-full bg-black">
+    <div className="relative min-h-screen w-full flex flex-col overflow-hidden">
+      <div className="absolute inset-0 z-0 w-full h-fit">
         <video
           ref={videoRef}
           loop
           playsInline
           preload="auto"
           poster="/images/landingpage.jpeg"
-          className="absolute inset-0 w-full h-full object-fill"
+          className="absolute inset-0 w-full"
         >
           <source src="/videos/herosection.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
       </div>
 
-      <div className="relative z-10">
-        <Header />
-      </div>
-
-      <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-20 flex items-center gap-4 group">
+      <div className="absolute bottom-4 left-4 md:bottom-12 md:left-12 z-20 flex items-center gap-4 group">
         <Button
           asChild
           size="sm"
-          className="relative h-14 sm:h-16 px-8 sm:px-12 text-lg sm:text-xl md:bottom-12 font-bold rounded-full bg-white text-black hover:!bg-white active:!bg-white transition-none"
+          className="h-14 sm:h-16 px-8 sm:px-12 text-lg sm:text-xl font-bold rounded-full  transition-none"
         >
-          <Link href="/registration" className="flex items-center gap-3">
+          <Link href="/registration" className="flex items-center gap-2">
             REGISTER NOW
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-5 h-5 sm:w-6 sm:h-6 transition-transform"
-            >
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
+            <HugeiconsIcon icon={ArrowRightIcon} strokeWidth={2.5} className="size-5" />
           </Link>
         </Button>
       </div>
 
       <button
         onClick={toggleMute}
-        className="absolute bottom-8 right-8 md:bottom-22 md:right-12 z-20 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 text-white"
+        className="absolute bottom-4 right-4 md:bottom-12 md:right-12 z-20 p-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 text-white"
         aria-label={isMuted ? "Unmute video" : "Mute video"}
       >
-        {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+        {isMuted ? (
+          <HugeiconsIcon icon={VolumeOffIcon} size={24} />
+        ) : (
+          <HugeiconsIcon icon={VolumeUpIcon} size={24} />
+        )}
       </button>
     </div>
   );

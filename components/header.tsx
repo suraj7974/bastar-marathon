@@ -1,16 +1,34 @@
 import Image from "next/image";
+import Link from "next/link";
+
+const NavLinkItem = ({ href, label }: { href: string; label: string }) => {
+  return (
+    <Link
+      href={href}
+      className="text-sm flex flex-col items-center group font-medium text-gray-700 hover:text-gray-900"
+    >
+      <p className="group-hover:text-amber-500 transition-all duration-300">{label}</p>
+      <span className="w-0 h-0.5 bg-amber-500 rounded-full group-hover:w-full  transition-all duration-300" />
+    </Link>
+  );
+};
 
 export function Header() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 p-6 md:p-8 flex justify-between items-center">
-      <div className="flex items-center gap-4">
+    <header className="fixed h-18 top-0 left-0 bg-white shadow-sm right-0 z-50  flex justify-between items-center">
+      <div className="container mx-auto flex items-center justify-between gap-4">
         <Image
           src="/images/logo.png"
           alt="Bastar Marathon Logo"
           width={60}
           height={60}
-          className="w-12 h-12 md:w-16 md:h-16 object-contain"
+          className="size-12 object-contain"
         />
+        <nav className="flex items-center gap-5">
+          <NavLinkItem href="/" label="Home" />
+          <NavLinkItem href="/registration" label="Registration" />
+          <NavLinkItem href="/prizes" label="Prizes" />
+        </nav>
       </div>
     </header>
   );

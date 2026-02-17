@@ -75,13 +75,11 @@ export default function RouteMap() {
   if (!mounted) return null;
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-16 md:py-24 bg-linear-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Explore the Routes
-          </h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Explore the Routes</h2>
           <div className="max-w-3xl mx-auto space-y-4">
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
               Designed for endurance seekers, the 42 km Full Marathon takes runners deep into the
@@ -100,14 +98,14 @@ export default function RouteMap() {
         </div>
 
         {/* Route Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {routeData.map((route) => (
             <div
               key={route.embedId}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               {/* Route Title */}
-              <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-4">
+              <div className="bg-linear-to-t from-primary via-primary/80 to-primary/60 p-4">
                 <h3 className="text-xl md:text-2xl font-bold text-white text-center">
                   {route.title}
                 </h3>
