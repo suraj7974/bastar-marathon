@@ -74,7 +74,7 @@ export default function HeroSection() {
           muted
           autoPlay
           preload="auto"
-          poster="/images/landingpage.jpeg"
+          poster="/images/landing-page.jpeg"
           className="absolute inset-0 w-full"
         >
           <source src="/videos/hero-video.mov" type="video/mp4" />
