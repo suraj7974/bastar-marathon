@@ -55,7 +55,7 @@ export default function HeroSection() {
           poster="/images/landingpage.jpeg"
           className="absolute inset-0 w-full"
         >
-          <source src="/videos/newvideo.mp4" type="video/mp4" />
+          <source src="/videos/landingpage.mp4" type="video/mp4" />
         </video>
       </div>
 
