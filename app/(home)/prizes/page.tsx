@@ -164,7 +164,7 @@ const Prices = () => {
               <p className="text-3xl text-gray-700 font-semibold text-center">
                 Compete for an incredible total prize pool of{" "}
                 <span className="text-primary font-bold text-4xl block md:inline mt-2 md:mt-0">
-                  ₹15 Lakhs
+                  ₹25 Lakhs
                 </span>
               </p>
             </div>
