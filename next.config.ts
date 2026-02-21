@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
     SMTP_SECURE: process.env.SMTP_SECURE,
     SMTP_USER: process.env.SMTP_USER,
     SMTP_PASS: process.env.SMTP_PASS,
+    ICICI_MERCHANT_ID: process.env.MERCHANT_ID,
+    ICICI_AGGREGATOR_ID: process.env.AGGREGATOR_ID,
+    ICICI_URL: process.env.ICICI_URL,
+    ICICI_KEY: process.env.ICICI_KEY,
   },
   images: {
     qualities: [75, 100],

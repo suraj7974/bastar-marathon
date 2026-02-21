@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRegistrationStore } from "@/store/useRegistrationStore";
 import { useStepStore } from "@/store/useStepStore";
 import { registrationsTable } from "@/lib/supabase";
-import { initiatePayment } from "@/lib/payu";
+import { initiatePayment } from "@/lib/icici";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,7 +19,6 @@ import {
 
 const REGISTRATION_FEE = 299;
 const TSHIRT_FEE = 200;
-const JAGDALPUR_CITY = "Jagdalpur";
 const TSHIRT_SIZES = ["S", "M", "L", "XL", "XXL"] as const;
 
 export function Step3Payment() {
@@ -31,12 +30,13 @@ export function Step3Payment() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const isJagdalpur = form.city?.trim().toLowerCase() === JAGDALPUR_CITY.toLowerCase();
-  const registrationFee = isJagdalpur ? 0 : REGISTRATION_FEE;
+  const isFree =
+    form.city?.trim().toLowerCase() === "jagdalpur" || form.city?.trim().toLowerCase() === "bastar";
+  const registrationFee = isFree ? 0 : REGISTRATION_FEE;
   const tshirtFee = wantsTshirt ? TSHIRT_FEE : 0;
   const totalFee = registrationFee + tshirtFee;
 
-  const canProceedFree = isJagdalpur && !wantsTshirt && totalFee === 0 && acceptedTerms;
+  const canProceedFree = isFree && !wantsTshirt && totalFee === 0 && acceptedTerms;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,9 +97,9 @@ export function Step3Payment() {
               <span>Registration fee</span>
               <span>₹{registrationFee}</span>
             </div>
-            {isJagdalpur && (
+            {isFree && (
               <p className="text-sm text-green-600">
-                No registration fee for participants from Jagdalpur.
+                No registration fee for participants from Jagdalpur or Bastar.
               </p>
             )}
             <div className="flex items-center gap-3">

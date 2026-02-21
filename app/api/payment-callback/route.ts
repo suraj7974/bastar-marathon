@@ -5,10 +5,7 @@ import { REGISTRATION_SCHEMA, REGISTRATIONS_TABLE } from "@/lib/constants";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-async function handleCallback(url: URL) {
-  const identificationNumber = url.searchParams.get("identification_number");
-  const success = url.searchParams.get("success");
-
+async function handleCallback(identificationNumber: string | null, isSuccess: boolean) {
   if (!identificationNumber) {
     console.error("[payment-callback] No identification_number");
     return new NextResponse(null, {
@@ -19,7 +16,7 @@ async function handleCallback(url: URL) {
     });
   }
 
-  if (success === "true") {
+  if (isSuccess) {
     if (supabaseUrl && supabaseAnonKey) {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
       await supabase
@@ -45,19 +42,37 @@ async function handleCallback(url: URL) {
 }
 
 export async function GET(req: Request) {
-  return await handleCallback(new URL(req.url));
+  const url = new URL(req.url);
+  const identificationNumber = url.searchParams.get("identification_number");
+  const success = url.searchParams.get("success") === "true";
+  return await handleCallback(identificationNumber, success);
 }
 
 export async function POST(req: Request) {
   const url = new URL(req.url);
+  let identificationNumber = url.searchParams.get("identification_number");
+  let isSuccess = url.searchParams.get("success") === "true";
+
   try {
-    const body = await req.formData();
-    const id = body.get("identification_number") ?? url.searchParams.get("identification_number");
-    const succ = body.get("success") ?? url.searchParams.get("success");
-    if (id) url.searchParams.set("identification_number", String(id));
-    if (succ) url.searchParams.set("success", String(succ));
-  } catch {
-    // use URL params only
+    const contentType = req.headers.get("content-type") || "";
+
+    if (contentType.includes("application/json")) {
+      const body = await req.json();
+      if (body.addlParam1) identificationNumber = body.addlParam1;
+      if (body.responseCode === "0000") isSuccess = true;
+    } else {
+      const body = await req.formData();
+      const id = body.get("identification_number") || body.get("addlParam1");
+      const succ = body.get("success");
+      const respCode = body.get("responseCode");
+
+      if (id) identificationNumber = String(id);
+      if (succ === "true") isSuccess = true;
+      if (respCode === "0000") isSuccess = true;
+    }
+  } catch (e) {
+    console.error("[payment-callback] Error parsing body:", e);
   }
-  return await handleCallback(url);
+
+  return await handleCallback(identificationNumber, isSuccess);
 }

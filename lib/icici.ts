@@ -17,23 +17,14 @@ export async function initiatePayment(
 
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
-    throw new Error(err?.error ?? "Failed to create order");
+    throw new Error(err?.details || err?.error || "Failed to create order");
   }
 
-  const paymentData = await response.json();
+  const data = await response.json();
 
-  const form = document.createElement("form");
-  form.method = "POST";
-  form.action = "https://secure.payu.in/_payment";
-
-  Object.entries(paymentData).forEach(([key, value]) => {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = key;
-    input.value = String(value);
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-  form.submit();
+  if (data.paymentUrl) {
+    window.location.href = data.paymentUrl;
+  } else {
+    throw new Error("Invalid payment configuration received");
+  }
 }
