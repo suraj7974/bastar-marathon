@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const TOURISM_IMAGES = [
   {
     src: "/images/tourism/chitrakoot-falls-1.jpg",
-    alt: "Chitrakote Waterfalls - The Niagara of India",
+    alt: "Chitrakote Waterfalls",
     orientation: "horizontal" as const,
     rowSpan: 2,
     colSpan: 1,
@@ -32,35 +32,35 @@ const TOURISM_IMAGES = [
 
   {
     src: "/images/tourism/danteswariTemple.jpg",
-    alt: "Danteshwari Temple - Sacred Site",
+    alt: "Danteshwari Temple",
     orientation: "square" as const,
     rowSpan: 1,
     colSpan: 1,
   },
   {
     src: "/images/tourism/dalpatSagar.jpg",
-    alt: "Dalpat Sagar Lake",
+    alt: "Dalpat Sagar",
     orientation: "square" as const,
     rowSpan: 2,
     colSpan: 1,
   },
   {
     src: "/images/tourism/chitrakoot-falls-2.jpg",
-    alt: "Chitrakote Falls Panoramic View",
+    alt: "Chitrakote Falls",
     orientation: "horizontal" as const,
     rowSpan: 2,
     colSpan: 2,
   },
   {
     src: "/images/tourism/waterfall.jpg",
-    alt: "Chitrakote Falls Panoramic View",
+    alt: "Chitrakote Waterfall",
     orientation: "horizontal" as const,
     rowSpan: 2,
     colSpan: 1,
   },
   {
     src: "/images/tourism/kutumsar.jpg",
-    alt: "Chitrakote Falls Panoramic View",
+    alt: "Kutumsar Caves",
     orientation: "horizontal" as const,
     rowSpan: 1,
     colSpan: 1,
