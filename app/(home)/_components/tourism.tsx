@@ -319,9 +319,24 @@ export default function Tourism() {
               }}
             >
               {TOURISM_IMAGES.map((image, index) => {
-                const rowSpanClass = `row-span-${image.rowSpan || 1}`;
-                const colSpanClass =
-                  image.colSpan && image.colSpan > 1 ? `lg:col-span-${image.colSpan}` : "";
+                const rowSpanClasses: Record<number, string> = {
+                  1: "row-span-1",
+                  2: "row-span-2",
+                  3: "row-span-3",
+                  4: "row-span-4",
+                  5: "row-span-5",
+                  6: "row-span-6",
+                };
+
+                const colSpanClasses: Record<number, string> = {
+                  1: "",
+                  2: "lg:col-span-2",
+                  3: "lg:col-span-3",
+                  4: "lg:col-span-4",
+                };
+
+                const rowSpanClass = rowSpanClasses[image.rowSpan] || "row-span-1";
+                const colSpanClass = colSpanClasses[image.colSpan] || "";
 
                 return (
                   <div
@@ -354,9 +369,15 @@ export default function Tourism() {
 
             {/* CTA */}
             <div className="text-center flex-shrink-0" style={{ padding: "1.5rem 1rem 2rem" }}>
-              <Button size="lg" className="group">
-                Explore All Destinations
-                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <Button size="lg" className="group" asChild>
+                <a
+                  href="https://www.google.com/search?q=bastar+tourism"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Explore All Destinations
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
             </div>
           </div>
